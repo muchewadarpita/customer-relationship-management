@@ -2,6 +2,7 @@ package com.example.CRM.Customer_relationship_management.controller;
 import com.example.CRM.Customer_relationship_management.model.User;
 import com.example.CRM.Customer_relationship_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -38,7 +39,9 @@ public class UserController {
 
 
 
+//    @PreAuthorize("hasAnyRole('SUPERADMIN','ADMIN')")
     @PutMapping("updateUser/{user_id}")
+
     public User updateUser (@PathVariable Long user_id, @RequestBody User user ) {
         return userService.updateUser(user_id, user);
     }

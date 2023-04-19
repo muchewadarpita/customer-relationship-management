@@ -1,5 +1,6 @@
 package com.example.CRM.Customer_relationship_management.service;
 
+//import com.example.CRM.Customer_relationship_management.customexception.MyCustomException;
 import com.example.CRM.Customer_relationship_management.model.User;
 import com.example.CRM.Customer_relationship_management.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         User user = userService.getUserByName(username);
-        if (user == null) {
-            System.out.println("error");
+        if (user == null ) {
             throw new UsernameNotFoundException("Could not find user");
+//            throw new MyCustomException("Could not find user");
         }
 
         return new MyUserDetails(user);
